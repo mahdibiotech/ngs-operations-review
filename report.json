@@ -1,0 +1,53 @@
+{
+  "status": "REVIEW_READY",
+  "qc": {
+    "positive_control_detected": true,
+    "negative_control_clear": true,
+    "minimum_read_count_met": true
+  },
+  "hits": [
+    {
+      "sample_id": "TEST001",
+      "role": "test",
+      "taxon": "SyntheticVirus-A",
+      "reads": 6,
+      "breadth": 0.08,
+      "identity_pct": 96.5,
+      "review_flag": true
+    },
+    {
+      "sample_id": "TEST001",
+      "role": "test",
+      "taxon": "SyntheticVirus-B",
+      "reads": 1,
+      "breadth": 0.01,
+      "identity_pct": 94.0,
+      "review_flag": false
+    },
+    {
+      "sample_id": "NEG001",
+      "role": "negative",
+      "taxon": "SyntheticVirus-A",
+      "reads": 0,
+      "breadth": 0.0,
+      "identity_pct": 0.0,
+      "review_flag": false
+    },
+    {
+      "sample_id": "POS001",
+      "role": "positive",
+      "taxon": "SyntheticVirus-A",
+      "reads": 35,
+      "breadth": 0.25,
+      "identity_pct": 99.2,
+      "review_flag": true
+    }
+  ],
+  "provenance": {
+    "hits_sha256": "926eab6df2ce59f427bc0bf74167b2531d95a89665509beaf10358ff2da688ec",
+    "metadata_sha256": "afe12515b2e9402f47bdbff60e736e7cb03313a05ac3c9966caaf2cd56f33219",
+    "software": "pathoquest-demo/0.1",
+    "purpose": "synthetic training demonstration"
+  },
+  "limitations": "No clinical or GMP interpretation. Review thresholds are illustrative; a flagged taxon is not a confirmed contaminant."
+}
