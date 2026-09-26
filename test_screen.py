@@ -1,39 +1,71 @@
-import json, tempfile, unittest
+import json
+import tempfile
+import unittest
 from pathlib import Path
 from screen import run
+from render_html import render
 
 ROOT = Path(__file__).parent
-class ScreenTests(unittest.TestCase):
-    def test_baseline(self):
-        output = run(ROOT/'data/hits.tsv', ROOT/'data/metadata.json')
-        self.assertEqual(output['status'], 'REVIEW_READY')
-        self.assertEqual([r['taxon'] for r in output['hits'] if r['role']=='test' and r['review_flag']], ['SyntheticVirus-A'])
-    def test_contaminated_negative_blocks(self):
+HITS = ROOT / 'data/demo_run/hits.tsv'
+META = ROOT / 'data/demo_run/metadata.json'
+CONFIG = ROOT / 'config/demo_rules.json'
+
+
+class LotReviewTests(unittest.TestCase):
+    def test_normal_run_preserves_ambiguous_signal_for_review(self):
+        report = run(HITS, META, CONFIG)
+        self.assertEqual(report['status'], 'REVIEW_READY')
+        self.assertEqual(len(report['worklist']), 2)
+        self.assertEqual(report['worklist'][0]['taxon'], 'SyntheticVirus-A')
+        ambiguous = report['worklist'][1]
+        self.assertEqual(ambiguous['taxon'], 'SyntheticVirus-C')
+        self.assertEqual(ambiguous['review_flags'],
+                         ['NEGATIVE_BACKGROUND', 'LIMITED_REGION_SUPPORT', 'HOST_SIMILARITY'])
+        self.assertEqual(ambiguous['state'], 'HUMAN_REVIEW')
+
+    def test_negative_control_failure_blocks_all_candidate_review(self):
+        report = run(ROOT / 'data/scenarios/negative_failure/hits.tsv', META, CONFIG)
+        self.assertEqual(report['status'], 'QC_BLOCKED')
+        self.assertFalse(report['qc']['negative_control_clear'])
+        self.assertTrue(all(row['state'] == 'ON_HOLD_QC' for row in report['worklist']))
+
+    def test_unexpected_positive_taxon_cannot_satisfy_control(self):
+        report = run(ROOT / 'data/scenarios/positive_failure/hits.tsv', META, CONFIG)
+        self.assertFalse(report['qc']['expected_positive_detected'])
+        self.assertEqual(report['status'], 'QC_BLOCKED')
+
+    def test_insufficient_depth_blocks_lot(self):
+        report = run(HITS, ROOT / 'data/scenarios/low_depth/metadata.json', CONFIG)
+        self.assertFalse(report['qc']['minimum_depth_met'])
+        self.assertEqual(report['status'], 'QC_BLOCKED')
+
+    def test_duplicate_reference_and_nonfinite_metrics_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp)/'hits.tsv'
-            path.write_text((ROOT/'data/hits.tsv').read_text().replace('NEG001\tSyntheticVirus-A\t0\t0\t10000\t0', 'NEG001\tSyntheticVirus-A\t4\t600\t10000\t95'))
-            self.assertEqual(run(path, ROOT/'data/metadata.json')['status'], 'QC_BLOCKED')
-    def test_missing_positive_blocks(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp)/'hits.tsv'
-            path.write_text((ROOT/'data/hits.tsv').read_text().replace('POS001\tSyntheticVirus-A\t35\t2500\t10000\t99.2', 'POS001\tSyntheticVirus-A\t1\t100\t10000\t99.2'))
-            self.assertEqual(run(path, ROOT/'data/metadata.json')['status'], 'QC_BLOCKED')
-    def test_invalid_coverage_fails(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp)/'hits.tsv'
-            path.write_text((ROOT/'data/hits.tsv').read_text().replace('800\t10000', '11000\t10000'))
-            with self.assertRaises(ValueError): run(path, ROOT/'data/metadata.json')
-    def test_duplicate_hit_fails(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp)/'hits.tsv'
-            lines = (ROOT/'data/hits.tsv').read_text().splitlines()
+            path = Path(tmp) / 'hits.tsv'
+            lines = HITS.read_text().splitlines()
             path.write_text('\n'.join(lines + [lines[1]]) + '\n')
-            with self.assertRaisesRegex(ValueError, 'duplicate'): run(path, ROOT/'data/metadata.json')
-    def test_missing_control_fails(self):
+            with self.assertRaisesRegex(ValueError, 'duplicate'):
+                run(path, META, CONFIG)
+            path.write_text('\n'.join(lines).replace('98.2', 'NaN') + '\n')
+            with self.assertRaisesRegex(ValueError, 'mean_identity'):
+                run(path, META, CONFIG)
+
+    def test_provenance_changes_when_evidence_changes(self):
+        baseline = run(HITS, META, CONFIG)
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp)/'metadata.json'
-            meta = json.loads((ROOT/'data/metadata.json').read_text())
-            del meta['samples']['NEG001']
-            path.write_text(json.dumps(meta))
-            with self.assertRaisesRegex(ValueError, 'roles required'): run(ROOT/'data/hits.tsv', path)
-if __name__ == '__main__': unittest.main()
+            path = Path(tmp) / 'hits.tsv'
+            path.write_text(HITS.read_text().replace('24\t5\t1800', '25\t5\t1800'))
+            modified = run(path, META, CONFIG)
+            self.assertNotEqual(baseline['provenance']['hits_sha256'], modified['provenance']['hits_sha256'])
+            self.assertEqual(baseline['provenance']['config_sha256'], modified['provenance']['config_sha256'])
+
+    def test_html_escapes_upstream_taxon(self):
+        report = run(HITS, META, CONFIG)
+        report['worklist'][0]['taxon'] = '<script>alert(1)</script>'
+        html = render(report)
+        self.assertIn('&lt;script&gt;', html)
+        self.assertNotIn('<script>alert(1)</script>', html)
+
+
+if __name__ == '__main__':
+    unittest.main()

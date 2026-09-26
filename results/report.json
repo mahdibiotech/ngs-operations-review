@@ -1,0 +1,165 @@
+{
+  "schema_version": "2.0",
+  "run_id": "SYN-RUN-001",
+  "status": "REVIEW_READY",
+  "assay_context": "generic adventitious-signal review, not an iDTECT assay",
+  "platform": "synthetic short-read example",
+  "qc": {
+    "expected_positive_detected": true,
+    "negative_control_clear": true,
+    "minimum_depth_met": true
+  },
+  "samples": {
+    "TEST001": {
+      "role": "test",
+      "total_reads": 15000
+    },
+    "TEST002": {
+      "role": "test",
+      "total_reads": 18000
+    },
+    "NEG001": {
+      "role": "negative",
+      "total_reads": 12000
+    },
+    "POS001": {
+      "role": "positive",
+      "total_reads": 11000,
+      "expected_taxon": "SyntheticVirus-A"
+    }
+  },
+  "hits": [
+    {
+      "sample_id": "TEST001",
+      "role": "test",
+      "taxon": "SyntheticVirus-A",
+      "reference_accession": "SYN-A1",
+      "reads": 24,
+      "unique_regions": 5,
+      "covered_bases": 1800,
+      "reference_bases": 10000,
+      "mean_identity": 98.2,
+      "host_similarity_pct": 12.0,
+      "breadth": 0.18,
+      "rpm": 1600.0,
+      "gate_pass": true,
+      "review_flags": []
+    },
+    {
+      "sample_id": "TEST001",
+      "role": "test",
+      "taxon": "SyntheticVirus-B",
+      "reference_accession": "SYN-B1",
+      "reads": 2,
+      "unique_regions": 1,
+      "covered_bases": 140,
+      "reference_bases": 10000,
+      "mean_identity": 94.0,
+      "host_similarity_pct": 10.0,
+      "breadth": 0.014,
+      "rpm": 133.333,
+      "gate_pass": false,
+      "review_flags": []
+    },
+    {
+      "sample_id": "TEST002",
+      "role": "test",
+      "taxon": "SyntheticVirus-C",
+      "reference_accession": "SYN-C1",
+      "reads": 6,
+      "unique_regions": 1,
+      "covered_bases": 850,
+      "reference_bases": 10000,
+      "mean_identity": 92.5,
+      "host_similarity_pct": 97.0,
+      "breadth": 0.085,
+      "rpm": 333.333,
+      "gate_pass": true,
+      "review_flags": [
+        "NEGATIVE_BACKGROUND",
+        "LIMITED_REGION_SUPPORT",
+        "HOST_SIMILARITY"
+      ]
+    },
+    {
+      "sample_id": "NEG001",
+      "role": "negative",
+      "taxon": "SyntheticVirus-C",
+      "reference_accession": "SYN-C1",
+      "reads": 1,
+      "unique_regions": 1,
+      "covered_bases": 80,
+      "reference_bases": 10000,
+      "mean_identity": 92.1,
+      "host_similarity_pct": 97.0,
+      "breadth": 0.008,
+      "rpm": 83.333,
+      "gate_pass": false,
+      "review_flags": []
+    },
+    {
+      "sample_id": "POS001",
+      "role": "positive",
+      "taxon": "SyntheticVirus-A",
+      "reference_accession": "SYN-A1",
+      "reads": 42,
+      "unique_regions": 7,
+      "covered_bases": 3200,
+      "reference_bases": 10000,
+      "mean_identity": 99.1,
+      "host_similarity_pct": 12.0,
+      "breadth": 0.32,
+      "rpm": 3818.182,
+      "gate_pass": true,
+      "review_flags": []
+    }
+  ],
+  "worklist": [
+    {
+      "sample_id": "TEST001",
+      "taxon": "SyntheticVirus-A",
+      "reference_accession": "SYN-A1",
+      "reads": 24,
+      "rpm": 1600.0,
+      "unique_regions": 5,
+      "breadth": 0.18,
+      "identity_pct": 98.2,
+      "host_similarity_pct": 12.0,
+      "review_flags": [],
+      "state": "HUMAN_REVIEW"
+    },
+    {
+      "sample_id": "TEST002",
+      "taxon": "SyntheticVirus-C",
+      "reference_accession": "SYN-C1",
+      "reads": 6,
+      "rpm": 333.333,
+      "unique_regions": 1,
+      "breadth": 0.085,
+      "identity_pct": 92.5,
+      "host_similarity_pct": 97.0,
+      "review_flags": [
+        "NEGATIVE_BACKGROUND",
+        "LIMITED_REGION_SUPPORT",
+        "HOST_SIMILARITY"
+      ],
+      "state": "HUMAN_REVIEW"
+    }
+  ],
+  "demo_rules": {
+    "min_reads": 3,
+    "min_breadth": 0.05,
+    "min_identity_pct": 90.0,
+    "min_total_reads": 1000,
+    "min_unique_regions": 2,
+    "host_similarity_review_pct": 95.0
+  },
+  "provenance": {
+    "hits_sha256": "c721de0a279c51dffe639d45714f0b2cfd834d0843d12e3019aee3772e5aa308",
+    "metadata_sha256": "63335bd10231bf4639ad5585f4879e1203afcdba3c2109f3c260441d3003fe54",
+    "config_sha256": "2d6b81aa555dd635868a67ce7a64854f2d669b873eb196e5929bffb64fe1989c",
+    "reference_snapshot": "synthetic-refset-2026-09",
+    "software": "2.0.0-demo"
+  },
+  "limitations": "Synthetic training data and illustrative thresholds. Flags are triage prompts, not evidence of contamination, validated assay results, lot release or GMP compliance."
+}

@@ -1,0 +1,3 @@
+sample_id	taxon	reference_accession	reads	rpm	unique_regions	breadth	identity_pct	host_similarity_pct	review_flags	state
+TEST001	SyntheticVirus-A	SYN-A1	24	1600.0	5	0.18	98.2	12.0		HUMAN_REVIEW
+TEST002	SyntheticVirus-C	SYN-C1	6	333.333	1	0.085	92.5	97.0	NEGATIVE_BACKGROUND,LIMITED_REGION_SUPPORT,HOST_SIMILARITY	HUMAN_REVIEW

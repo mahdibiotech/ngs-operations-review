@@ -1,5 +1,0 @@
-sample_id	taxon	reads	covered_bases	reference_bases	mean_identity
-TEST001	SyntheticVirus-A	6	800	10000	96.5
-TEST001	SyntheticVirus-B	1	100	10000	94.0
-NEG001	SyntheticVirus-A	0	0	10000	0
-POS001	SyntheticVirus-A	35	2500	10000	99.2
