@@ -3,7 +3,7 @@
 Projet personnel de candidature de Mahdi Attabi. Données et noms de virus fictifs. Sans lien avec les données, logiciels ou procédures propriétaires de PathoQuest.
 
 ## Pourquoi ce projet
-Le poste d'ingénieur bio-informatique Opérations associe exécution d'analyses NGS, contrôles, rendu et documentation. Cette petite démonstration illustre le traitement vérifiable d'un tableau de hits déjà produits : validation des entrées, revue des contrôles, signalements illustratifs, empreintes des fichiers et rapport JSON.
+Ce projet associe exécution d'analyses NGS, contrôles, rendu et documentation. Cette petite démonstration illustre le traitement vérifiable d'un tableau de hits déjà produits : validation des entrées, revue des contrôles, signalements illustratifs, empreintes des fichiers et rapport JSON.
 
 ## Exécution (Python 3, bibliothèque standard)
 
