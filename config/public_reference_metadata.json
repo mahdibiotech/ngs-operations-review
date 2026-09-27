@@ -1,0 +1,40 @@
+{
+  "snapshot_id": "ncbi-refseq-mini-panel-2026-09-27",
+  "retrieved_utc": "2026-09-27",
+  "source": "NCBI Nucleotide / RefSeq",
+  "references": [
+    {
+      "accession": "NC_045512.2",
+      "organism": "Severe acute respiratory syndrome coronavirus 2",
+      "label": "SARS-CoV-2",
+      "role": "virus",
+      "fasta": "data/public_references/NC_045512.2.fasta",
+      "source_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2",
+      "length": 29903,
+      "sha256": "0891c00cc2d503f58e0c600ce5ee64e9c64b939525c70d5486bc46cbc7cb073e"
+    },
+    {
+      "accession": "NC_001803.1",
+      "organism": "Human respiratory syncytial virus",
+      "label": "HRSV A (UK/S2.ts1C/1995)",
+      "role": "virus",
+      "fasta": "data/public_references/NC_001803.1.fasta",
+      "source_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_001803.1",
+      "length": 15191,
+      "sha256": "bf5676dc19e692b89eddf1a249381f759f76488bdcf8e0f43326caff73be587d"
+    },
+    {
+      "accession": "NC_012920.1",
+      "organism": "Homo sapiens mitochondrion",
+      "label": "Human mitochondrial decoy",
+      "role": "host_decoy",
+      "fasta": "data/public_references/NC_012920.1.fasta",
+      "source_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_012920.1",
+      "length": 16569,
+      "sha256": "fc392cde8e63b4d2e3a870bb97cc0626dea33d46dfb8abdebffada040f42ec92"
+    }
+  ],
+  "notice": "A deliberately small public reference panel for a software demonstration. It is not a comprehensive viral database and cannot support broad negative claims.",
+  "panel_fasta": "data/public_references/panel.fasta",
+  "panel_sha256": "5c2cd6b1b29515b52c4ad67a74073183d49dafda1748c935fa238428f234ad16"
+}

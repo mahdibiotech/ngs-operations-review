@@ -1,0 +1,25 @@
+{
+  "run_id": "SYN-RUN-001",
+  "platform": "synthetic short-read example",
+  "assay_context": "generic adventitious-signal review, not an iDTECT assay",
+  "reference_snapshot": "synthetic-refset-2026-09",
+  "samples": {
+    "TEST001": {
+      "role": "test",
+      "total_reads": 4
+    },
+    "TEST002": {
+      "role": "test",
+      "total_reads": 3
+    },
+    "NEG001": {
+      "role": "negative",
+      "total_reads": 1
+    },
+    "POS001": {
+      "role": "positive",
+      "total_reads": 4,
+      "expected_taxon": "SyntheticVirus-A"
+    }
+  }
+}

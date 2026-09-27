@@ -1,0 +1,1780 @@
+{
+  "software": "pathoquest-demo/0.5.0",
+  "tool_versions": {
+    "bowtie2": "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2-align-s version 2.5.4",
+    "blastn": "blastn: 2.16.0+",
+    "makeblastdb": "makeblastdb: 2.16.0+"
+  },
+  "run_id": "v5_blastfix",
+  "status": "EXPLORATORY_REPORT_READY",
+  "reference_snapshot": "ncbi-refseq-mini-panel-2026-09-27",
+  "reference_catalog_sha256": "5c2cd6b1b29515b52c4ad67a74073183d49dafda1748c935fa238428f234ad16",
+  "reference_metadata_sha256": "c93d8bd2133cb9053e8342a91615b32ca154d7501eeef29a961abf2c20333a2a",
+  "parameter_file_sha256": "bc5798f5adfd29a69c07cec2c2ee54866650e4643ce1df0464f76b0360090690",
+  "thresholds": {
+    "min_aligned_reads": 10,
+    "min_blast_reads": 5,
+    "min_reference_breadth": 0.05,
+    "min_mapq": 10,
+    "min_read_identity": 90.0,
+    "min_read_query_coverage": 0.8,
+    "min_contig_identity": 90.0,
+    "min_contig_query_coverage": 0.5
+  },
+  "samples": [
+    {
+      "sample_id": "POS_NC_045512_2_F0.001_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 5,
+          "blast_reads": 5,
+          "breadth": 0.025081095542253285,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "46cebdd6ec010d92afe25b712de698c5d2b28bfef9e5b660615058efa67122f0",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.001_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 5,
+          "blast_reads": 5,
+          "breadth": 0.025081095542253285,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "8a8e29644298ecc66229b019060da90b0aac79bb8f88807a9a985634888ffa78",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.001_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 5,
+          "blast_reads": 5,
+          "breadth": 0.025081095542253285,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "0a34427a01db9cfa8c533849b28a4cbc9156ae7d5fdc0e20803ff20a79a1b972",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.005_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 25,
+          "blast_reads": 25,
+          "breadth": 0.12256295354981106,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "fbcad6e665ca08242e0885f4e32c5c59244d167da2b30febd2ceb33028596b1b",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.005_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 25,
+          "blast_reads": 25,
+          "breadth": 0.11497174196568906,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "c99fe34a93d1759cbf62ae97f2a436c3c36b0669ac0510c112ea2fe08fe76ec3",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.005_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 25,
+          "blast_reads": 25,
+          "breadth": 0.12052302444570778,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "89abea175ddb4c6378a6870e44ec11df55d8aa580df9e649aa881971658b0855",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.02_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 100,
+          "blast_reads": 100,
+          "breadth": 0.4036718723873859,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "e30dab837305e6e89a5122a859815065dbf1b6e2068e2fc2988babad56c5a288",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.02_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 100,
+          "blast_reads": 100,
+          "breadth": 0.42667959736481287,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "b557fdc68464213b152d4fbbbadeb515f1ede9e6ec76f40d5357cec6b29a4d3a",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.02_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 100,
+          "blast_reads": 100,
+          "breadth": 0.41654683476574256,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "b3e8234bb0e8e02a052258965c599046a725550574b85ddbfff5653af0b16b48",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.2_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 1000,
+          "blast_reads": 1000,
+          "breadth": 0.992375346955155,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "603743435bbb264a33dd8d1affd81c51c7bf07f441534e352f34c5980175e706",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.2_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 1000,
+          "blast_reads": 1000,
+          "breadth": 0.9964886466240845,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "059471634a456918ab2db7e05716479858c664a8febe6edbe764fe045e6082c6",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_045512_2_F0.2_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_045512.2",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 1000,
+          "blast_reads": 1000,
+          "breadth": 0.9896665886365916,
+          "candidate": true,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "496f6b29949d4a955b9309b136b8c1ea001c564785e36a90551fad7c99f291e1",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.001_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 5,
+          "blast_reads": 5,
+          "breadth": 0.04937133829240998,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "5126d7947eccbc2f674c660c2691a00cf300b3815d6b25cbf57e49e8f384de9f",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.001_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 5,
+          "blast_reads": 5,
+          "breadth": 0.04937133829240998,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "4688197ad35f7fac201250c4b0d11d29e607042a378e2a828f365b0930a088b9",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.001_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 5,
+          "blast_reads": 5,
+          "breadth": 0.04937133829240998,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "c1b8847a0b2cc391b5a0c64eea361b603c9f4273a32172f8041a49be8f8a46d4",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.005_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 25,
+          "blast_reads": 25,
+          "breadth": 0.20077677572246724,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "5aea5d9ad488905fe46fa34f7ddc0f730d77ad0937e66abeac24e6cbf15ef041",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.005_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 25,
+          "blast_reads": 25,
+          "breadth": 0.21084852873411888,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "c0bb17f02a01a01de765567874072596fbeeedb7833d052c6ad0b59ec6fde1a3",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.005_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 25,
+          "blast_reads": 25,
+          "breadth": 0.2176288591929432,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "33ec90a06f92c0b113e8b69b3631f5b4ede125412a7bbef68ab6994181ac7144",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.02_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 100,
+          "blast_reads": 100,
+          "breadth": 0.5833717332631163,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "2fb57d9e444e53e04fe7e1e1d920cb262750bc938711d9512b1fcf6e69fec6eb",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.02_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 100,
+          "blast_reads": 99,
+          "breadth": 0.625370285037193,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "6a46d4231dca1caa43cd5928b1c0e57fe279a96dc393b346deec83a1f4b8c808",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.02_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 100,
+          "blast_reads": 100,
+          "breadth": 0.6499901257323415,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "0189a1b6a854ccaf36d717f8cd65516817f78dfdc26784a75547dfde020f0b4b",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.2_R1",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 1000,
+          "blast_reads": 1000,
+          "breadth": 0.9987492594299257,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "e6a3ae0877229c3065e6820a9f876ce802221a0f8bc8c5aff725ae918abd22f0",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.2_R2",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 1000,
+          "blast_reads": 997,
+          "breadth": 0.9995392008426042,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "4a03d652704db2bb3db0fbf0efadf89dbbcff649b87fdd60abd5412172473b26",
+      "assembly": null
+    },
+    {
+      "sample_id": "POS_NC_001803_1_F0.2_R3",
+      "truth": "positive",
+      "expected_taxon": "NC_001803.1",
+      "read_count": 5000,
+      "detected": true,
+      "expected_detected": true,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 1000,
+          "blast_reads": 998,
+          "breadth": 0.997959318017247,
+          "candidate": true,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "b77f69f0e4f899be61a98706c9a92066449db97db2a3a795319ea9ec1dee84f0",
+      "assembly": null
+    },
+    {
+      "sample_id": "NEG_HOST_R1",
+      "truth": "negative",
+      "expected_taxon": null,
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "6a5f3f9cdbb9c2530b7b6712a863a80f9cec9c095345918b327b56e59106fc5c",
+      "assembly": null
+    },
+    {
+      "sample_id": "NEG_HOST_R2",
+      "truth": "negative",
+      "expected_taxon": null,
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "7eef83d477b5c43c4c20c2ee15bd67750e782ebb1abcd178b771171d737b9f88",
+      "assembly": null
+    },
+    {
+      "sample_id": "NEG_HOST_R3",
+      "truth": "negative",
+      "expected_taxon": null,
+      "read_count": 5000,
+      "detected": false,
+      "expected_detected": false,
+      "taxa": {
+        "SARS-CoV-2": {
+          "accession": "NC_045512.2",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        },
+        "HRSV A (UK/S2.ts1C/1995)": {
+          "accession": "NC_001803.1",
+          "aligned_reads": 0,
+          "blast_reads": 0,
+          "breadth": 0.0,
+          "candidate": false,
+          "contig_blast_hits": []
+        }
+      },
+      "input_sha256": "d2633594d3b4b031f1fd4e173590d4d73930f6339eb4edff620fd2785098b9a7",
+      "assembly": null
+    }
+  ],
+  "performance": {
+    "basis": "sample-level comparison against manifest truth labels; exploratory panel only",
+    "tp": 18,
+    "fn": 6,
+    "tn": 3,
+    "fp": 0,
+    "sensitivity": 0.75,
+    "sensitivity_95pct_wilson_ci": [
+      0.55100555994846,
+      0.8800063377140499
+    ],
+    "specificity": 1.0,
+    "specificity_95pct_wilson_ci": [
+      0.4385029682449546,
+      1.0
+    ],
+    "positive_samples": 24,
+    "negative_samples": 3,
+    "unknown_truth_samples_excluded": 0
+  },
+  "commands": [
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2-build",
+        "/home/mahdi/ngs-operations-review-v5/data/public_references/panel.fasta",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/bowtie2-build.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/makeblastdb",
+        "-in",
+        "/home/mahdi/ngs-operations-review-v5/data/public_references/panel.fasta",
+        "-dbtype",
+        "nucl",
+        "-parse_seqids",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/makeblastdb.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.001_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.001_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.001_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.001_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.001_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.001_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.001_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.001_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.001_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.001_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.005_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.005_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.005_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.005_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.005_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.005_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.005_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.005_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.005_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.005_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.02_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.02_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.02_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.02_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.02_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.02_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.02_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.02_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.02_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.02_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.2_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.2_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.2_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.2_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.2_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.2_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_045512_2_F0.2_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.2_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_045512_2_F0.2_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_045512_2_F0.2_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.001_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.001_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.001_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.001_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.001_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.001_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.001_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.001_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.001_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.001_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.005_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.005_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.005_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.005_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.005_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.005_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.005_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.005_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.005_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.005_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.02_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.02_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.02_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.02_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.02_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.02_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.02_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.02_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.02_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.02_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.2_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.2_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.2_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.2_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.2_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.2_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/POS_NC_001803_1_F0.2_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.2_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/POS_NC_001803_1_F0.2_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/POS_NC_001803_1_F0.2_R3.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/NEG_HOST_R1.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R1/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/NEG_HOST_R1.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R1/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R1/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/NEG_HOST_R1.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/NEG_HOST_R2.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R2/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/NEG_HOST_R2.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R2/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R2/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/NEG_HOST_R2.blast_reads.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/bowtie2",
+        "--very-sensitive",
+        "-x",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel",
+        "-U",
+        "/home/mahdi/ngs-operations-review-v5/data/v5_challenge/NEG_HOST_R3.fastq",
+        "-S",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R3/aligned.sam"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/NEG_HOST_R3.bowtie2.log"
+    },
+    {
+      "command": [
+        "/home/mahdi/miniforge3/envs/ngs-lot-review-v5/bin/blastn",
+        "-task",
+        "megablast",
+        "-query",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R3/reads.fasta",
+        "-db",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db",
+        "-outfmt",
+        "6 qseqid saccver pident length qlen evalue bitscore",
+        "-max_target_seqs",
+        "5",
+        "-out",
+        "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/NEG_HOST_R3/reads.blast.tsv"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "log": "/home/mahdi/ngs-operations-review-v5/results/v5_blastfix/logs/NEG_HOST_R3.blast_reads.log"
+    }
+  ],
+  "input_manifest_sha256": "869355634150e8bc366db8ea197decf2f49494ff5816bc30430bb5332c70309b",
+  "limitations": [
+    "Small public reference panel; not comprehensive.",
+    "Sensitivity/specificity are estimates on manifest-labeled challenge samples only, with broad uncertainty at small n.",
+    "This output is not a certificate of analysis, clinical decision, lot release, or validated GMP/BPF record."
+  ]
+}

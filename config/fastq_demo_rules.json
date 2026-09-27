@@ -1,0 +1,8 @@
+{
+  "min_reads": 3,
+  "min_breadth": 0.05,
+  "min_identity_pct": 90,
+  "min_total_reads": 1,
+  "min_unique_regions": 2,
+  "host_similarity_review_pct": 95
+}

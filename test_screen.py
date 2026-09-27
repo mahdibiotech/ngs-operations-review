@@ -89,6 +89,41 @@ class LotReviewTests(unittest.TestCase):
         self.assertTrue(result['all_passed'], result['cases'])
         self.assertEqual(len(result['cases']), 8)
 
+    def test_fastq_demo_reads_to_candidate_report(self):
+        from fastq_demo import summarize
+        rows, metadata, counts, ambiguous = summarize(
+            ROOT / 'data/fastq_demo', ROOT / 'data/fastq_demo/references.fasta',
+            ROOT / 'config/fastq_demo_references.json', META)
+        self.assertEqual(counts, {'TEST001': 4, 'TEST002': 3, 'NEG001': 1, 'POS001': 4})
+        self.assertEqual(ambiguous, dict.fromkeys(counts, 0))
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)
+            import csv
+            with (path / 'hits.tsv').open('w', newline='') as stream:
+                writer = csv.DictWriter(stream, fieldnames=('sample_id', 'taxon', 'reference_accession',
+                    'reads', 'unique_regions', 'covered_bases', 'reference_bases', 'mean_identity',
+                    'host_similarity_pct'), delimiter='\t')
+                writer.writeheader()
+                writer.writerows(rows)
+            (path / 'metadata.json').write_text(json.dumps(metadata))
+            report = run(path / 'hits.tsv', path / 'metadata.json',
+                         ROOT / 'config/fastq_demo_rules.json',
+                         ROOT / 'config/fastq_demo_references.json')
+            self.assertEqual(report['status'], 'REVIEW_READY')
+            self.assertEqual(len(report['worklist']), 2)
+
+    def test_fastq_demo_rejects_malformed_quality_and_unknown_fasta(self):
+        from fastq_demo import read_fastq, summarize
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'bad.fastq'
+            path.write_text('@r\nACGT\n+\nIII\n')
+            with self.assertRaisesRegex(ValueError, 'malformed'):
+                list(read_fastq(path))
+            path.write_text('>SYN-X1\nACGT\n')
+            with self.assertRaisesRegex(ValueError, 'FASTA catalogue'):
+                summarize(ROOT / 'data/fastq_demo', path,
+                          ROOT / 'config/fastq_demo_references.json', META)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,13 @@
+{
+  "thresholds": {
+    "min_aligned_reads": 10,
+    "min_blast_reads": 5,
+    "min_reference_breadth": 0.05,
+    "min_mapq": 10,
+    "min_read_identity": 90.0,
+    "min_read_query_coverage": 0.80,
+    "min_contig_identity": 90.0,
+    "min_contig_query_coverage": 0.50
+  },
+  "threshold_notice": "Exploratory cutoffs for a software demonstration; not validated acceptance criteria, clinical thresholds, or BPF release limits."
+}

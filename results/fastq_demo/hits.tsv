@@ -1,0 +1,11 @@
+sample_id	taxon	reference_accession	reads	unique_regions	covered_bases	reference_bases	mean_identity	host_similarity_pct
+TEST001	SyntheticVirus-A	SYN-A1	4	4	120	220	100	NA
+TEST002	SyntheticVirus-C	SYN-C1	3	3	90	220	100	NA
+NEG001	SyntheticVirus-A	SYN-A1	0	0	0	220	0	NA
+NEG001	SyntheticVirus-B	SYN-B1	0	0	0	220	0	NA
+NEG001	SyntheticVirus-C	SYN-C1	1	1	30	220	100	NA
+NEG001	SyntheticVirus-D	SYN-D1	0	0	0	220	0	NA
+POS001	SyntheticVirus-A	SYN-A1	4	4	120	220	100	NA
+POS001	SyntheticVirus-B	SYN-B1	0	0	0	220	0	NA
+POS001	SyntheticVirus-C	SYN-C1	0	0	0	220	0	NA
+POS001	SyntheticVirus-D	SYN-D1	0	0	0	220	0	NA

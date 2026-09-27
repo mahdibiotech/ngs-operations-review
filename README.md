@@ -1,46 +1,88 @@
-# NGS Lot Review — prototype de revue opérationnelle
+# NGS Lot Review — version 5
 
-Projet personnel de **Mahdi Attabi** pour illustrer la rigueur d'exploitation bioinformatique. Données, taxons, seuils et référence entièrement **synthétiques**. Sans accès aux données, procédures, logiciels ou critères de PathoQuest. Non destiné à une décision clinique, BPF ou à une libération de lot.
+Projet personnel de Mahdi Attabi : démonstrateur reproductible d'un petit flux de dépistage viral. Il ajoute à la v4 un **panel FASTA public**, un alignement Bowtie 2, une recherche BLAST+ des lectures et contigs, un assemblage SPAdes optionnel, une identification limitée aux références incluses, et des estimations de performance comparées à des étiquettes de vérité terrain.
 
-## Le problème exploré
+> **Périmètre :** logiciel de démonstration sur un panel minuscule, et challenge reads simulés depuis les références incluses. Ce n'est ni un certificat d'analyse, ni un rapport clinique, ni un résultat de test sur patient/produit, ni une décision de libération, ni une méthode validée/qualifiée en BPF. Les valeurs de sensibilité/spécificité ne décrivent que le panel simulé exécuté et ne mesurent pas les performances cliniques ou industrielles.
 
-Après qu'une analyse NGS a produit une table de correspondances, comment faire passer **tout un lot** par les mêmes vérifications avant la revue humaine ? Un signal peut être accompagné de similarité à l'hôte, d'un soutien limité à une région ou d'un faible bruit dans le témoin négatif. L'outil conserve ces indices au lieu de conclure à une contamination ou d'éliminer automatiquement le signal.
+## Références publiques
 
-PathoQuest décrit publiquement des essais de sécurité virale et des analyses donnant lieu à des rapports, dans un environnement de qualité réglementé. Ce projet explore une **interface de revue** déduite de ce contexte ; il ne présume d'aucune difficulté interne ni ne reproduit la plateforme iDTECT®. Voir `docs/requirements.md` pour les sources et les exigences.
+Le fichier `data/public_references/panel.fasta` contient deux références virales RefSeq et un leurre mitochondrial humain RefSeq. Accession, rôle, organisme, longueur, URL NCBI et SHA-256 figurent dans `config/public_reference_metadata.json`. La source reste identifiée dans les en-têtes FASTA. Le panel est volontairement petit et ne peut pas couvrir la diversité virale ou permettre d'interpréter une absence de hit comme une absence de virus.
 
-## Lancer la démonstration (Python 3, bibliothèque standard)
+Pour actualiser les fichiers depuis NCBI par accession, lancer `python3 fetch_public_references.py`, puis vérifier les nouveaux SHA-256 consignés dans le fichier de métadonnées avant une analyse.
+
+| Accession | Séquence | Rôle |
+|---|---|---|
+| NC_045512.2 | SARS-CoV-2 Wuhan-Hu-1 | Référence virale |
+| NC_001803.1 | HRSV A isolate UK/S2.ts1C/1995 | Référence virale |
+| NC_012920.1 | Mitochondrie humaine | Leurre de séquence hôte |
+
+## Installer les outils
+
+Avec Conda ou Mamba :
 
 ```bash
-python3 screen.py
-python3 validate_demo.py
+conda env create -f environment.yml
+conda activate ngs-lot-review-v5
+bowtie2 --version
+blastn -version
+spades.py --version
+```
+
+## Créer un challenge panel étiqueté
+
+Depuis la racine du dépôt, générer une série déterministe de lectures simulées, positives à plusieurs proportions virales et négatives à séquences mitochondriales :
+
+```bash
+python3 simulate_challenge_v5.py --outdir data/v5_challenge
+```
+
+Cela crée 27 échantillons par défaut : 24 positifs simulés (2 virus × 4 fractions × 3 réplicats) et 3 négatifs simulés. Les lectures et vérités terrain sont générées à partir des références locales ; elles ne sont pas des données publiques d'échantillons biologiques. Les options de taille, de fraction, de longueur et de graine sont visibles avec `--help`.
+
+## Exécuter l'alignement et le BLAST
+
+```bash
+python3 pipeline_v5.py \
+  --manifest data/v5_challenge/manifest.csv \
+  --outdir results/v5
+```
+
+Le programme construit les index locaux, aligne les reads avec Bowtie 2, cherche les reads contre le FASTA avec BLAST+, mesure les reads alignés et la couverture de référence, puis demande un **soutien indépendant** de BLAST pour proposer un candidat. Il écrit `results/v5/report.json` et `results/v5/report.html`. Les commandes, logs, fichiers SAM et intermédiaires BLAST sont conservés sous `results/v5/work/` et `results/v5/logs/` pour permettre l'inspection.
+
+## Ajouter l'assemblage
+
+```bash
+python3 pipeline_v5.py \
+  --manifest data/v5_challenge/manifest.csv \
+  --outdir results/v5_assembly \
+  --assemble --assemble-sample POS_NC_045512_2_F0.2_R1
+```
+
+Avec `--assemble`, SPAdes en mode `--rnaviral` assemble les échantillons sélectionnés ; si aucun `--assemble-sample` n'est fourni, il assemble tous les échantillons. Les contigs sont ensuite interrogés par BLAST+ sur le même panel. Les contigs sont une preuve d'appui à examiner, pas une confirmation autonome d'identité.
+
+## Sensibilité et spécificité
+
+Le rapport compare les étiquettes du manifeste au résultat binaire du dépistage, présente TP/FN/TN/FP, les effectifs et les intervalles de confiance de Wilson à 95 %. Pour les positifs, la sensibilité exige la détection du taxon attendu ; pour les négatifs, une détection de n'importe quel taxon viral est un faux positif. Les échantillons `unknown` sont exclus. Des effectifs réduits produisent des intervalles larges. Une série de lectures simulées mesure le comportement du logiciel face à cette simulation ; elle ne permet pas d'estimer une sensibilité clinique, une limite de détection validée ou la spécificité d'une méthode réglementée.
+
+Les seuils de `config/pipeline_v5.json` sont des valeurs d'exploration. Les changer modifie les métriques du panel. Ils ne sont pas des critères PathoQuest, des seuils diagnostiques, des limites BPF ou une validation de méthode.
+
+## Tests logiciels
+
+```bash
 python3 -m unittest discover -s . -v
 ```
 
-La première commande écrit :
+Les tests couvrent les lecteurs FASTQ, le CIGAR SAM, les filtres BLAST et les calculs de métriques. Ils ne remplacent pas une validation des outils externes ni une validation de méthode.
 
-- `results/report.json` : état du lot, résultats complets, motifs de revue et empreintes des entrées/règles ;
-- `results/report.html` : rapport autonome à ouvrir dans un navigateur ;
-- `results/worklist.tsv` : candidats à examiner par une personne.
-- `results/validation_report.json` (deuxième commande) : huit défis synthétiques, résultat observé et empreintes des entrées.
+## Nature du rapport HTML
 
-Chaque correspondance est confrontée au catalogue versionné `config/synthetic_references.json` : accession, taxon et longueur doivent correspondre. Le nom de version doit correspondre à `metadata.reference_snapshot`. L'empreinte SHA-256 du catalogue figure dans le rapport : une modification des références est visible lors de la revue. `validate_demo.py` vérifie les témoins, le blocage, une référence inconnue, la répétabilité et le comportement exactement au seuil et juste en dessous. Une erreur donne un code retour non nul.
+Le HTML est un **rapport exploratoire généré automatiquement**. Il inclut un avertissement visible, la provenance et l'empreinte du panel, les résultats par échantillon, les métriques et leurs intervalles. Il ne comporte ni signature, ni revue indépendante, ni contrôle des versions approuvé, ni procédure qualité, ni audit trail immuable. Il ne doit pas être nommé ou remis comme certificat d'analyse.
 
-Dans WSL : `explorer.exe results` puis ouvrir `report.html`.
+## Références de documentation
 
-**Résultat attendu du lot nominal** : `REVIEW_READY`, deux candidats. SyntheticVirus-A dans TEST001 passe les seuils fictifs sans indicateur complémentaire. SyntheticVirus-C dans TEST002 passe les seuils, mais porte les motifs `NEGATIVE_BACKGROUND`, `LIMITED_REGION_SUPPORT` et `HOST_SIMILARITY` ; il reste en revue humaine.
-
-## Tester les échecs des témoins
-
-```bash
-python3 screen.py --hits data/scenarios/negative_failure/hits.tsv --output /tmp/pq-negative.json --html /tmp/pq-negative.html --worklist /tmp/pq-negative.tsv
-python3 screen.py --hits data/scenarios/positive_failure/hits.tsv --output /tmp/pq-positive.json --html /tmp/pq-positive.html --worklist /tmp/pq-positive.tsv
-python3 screen.py --metadata data/scenarios/low_depth/metadata.json --output /tmp/pq-depth.json --html /tmp/pq-depth.html --worklist /tmp/pq-depth.tsv
-```
-
-Ces trois commandes retournent le code `2` avec `QC_BLOCKED` et une liste de travail en état `ON_HOLD_QC`. Ne pas enchaîner avec `&&` si vous souhaitez voir les trois cas. `docs/requirements.md` lie chaque exigence à un test.
-
-## Limites et pistes d'amelioration
-
-Le prototype lit des **preuves résumées** venant d'une étape amont fictive. Il n'analyse pas de FASTQ, ne réalise ni alignement, ni BLAST, ni assemblage, ni identification virale, ni estimation de sensibilité/spécificité. Les contrôles et seuils sont pédagogiques ; le HTML n'est pas un certificat d'analyse. Une transposition en contexte BPF exigerait une validation et une infrastructure qualité distinctes.
-
-Ce banc d'essais prouve seulement que **le code de démonstration** réagit comme prévu à ces huit jeux fictifs ; il ne constitue ni une validation de méthode ni une qualification d'environnement réglementé. Pour exécuter sur d'autres entrées résumées, utiliser `--hits`, `--metadata`, `--config`, `--references` avec `screen.py`.
+- NCBI RefSeq `NC_045512.2`: https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2
+- NCBI RefSeq `NC_001803.1`: https://www.ncbi.nlm.nih.gov/nuccore/NC_001803.1
+- NCBI RefSeq `NC_012920.1`: https://www.ncbi.nlm.nih.gov/nuccore/NC_012920.1
+- NCBI BLAST+ User Manual: https://www.ncbi.nlm.nih.gov/books/NBK279690/
+- Bowtie 2 Manual: https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+- SPAdes documentation: https://ablab.github.io/spades/
+- Pour la trajectoire d'évolution vers un environnement BPF et les preuves à produire, voir `docs/v5-method-and-limits.md`.

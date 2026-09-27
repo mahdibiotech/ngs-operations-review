@@ -113,8 +113,9 @@ def read_inputs(hits_path, metadata_path, config_path, references_path):
         reference = references.get(item['reference_accession'])
         if reference is None or reference['taxon'] != item['taxon'] or reference['length'] != item['reference_bases']:
             raise ValueError(f'hits line {line}: unknown reference or taxon/length mismatch')
-        for field in ('mean_identity', 'host_similarity_pct'):
-            item[field] = decimal(row[field], f'hits line {line}.{field}')
+        item['mean_identity'] = decimal(row['mean_identity'], f'hits line {line}.mean_identity')
+        item['host_similarity_pct'] = (None if row['host_similarity_pct'] == 'NA' else
+                                       decimal(row['host_similarity_pct'], f'hits line {line}.host_similarity_pct'))
         if (item['unique_regions'] > item['reads'] or item['reads'] > samples[sid]['total_reads']
                 or item['covered_bases'] > item['reference_bases']
                 or (item['reads'] == 0 and (item['covered_bases'] or item['unique_regions']))):
@@ -151,7 +152,8 @@ def run(hits_path, metadata_path, config_path, references_path=None):
                 flags.append('NEGATIVE_BACKGROUND')
             if hit['unique_regions'] < config['min_unique_regions']:
                 flags.append('LIMITED_REGION_SUPPORT')
-            if hit['host_similarity_pct'] >= config['host_similarity_review_pct']:
+            if (hit['host_similarity_pct'] is not None and
+                    hit['host_similarity_pct'] >= config['host_similarity_review_pct']):
                 flags.append('HOST_SIMILARITY')
             worklist.append({'sample_id': hit['sample_id'], 'taxon': hit['taxon'],
                              'reference_accession': hit['reference_accession'],

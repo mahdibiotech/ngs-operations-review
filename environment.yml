@@ -1,0 +1,9 @@
+name: ngs-lot-review-v5
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - bowtie2=2.5.4
+  - blast=2.16.0
+  - spades=4.1.0

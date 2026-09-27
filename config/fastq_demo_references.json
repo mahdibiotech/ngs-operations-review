@@ -1,0 +1,21 @@
+{
+  "snapshot_id": "synthetic-refset-2026-09",
+  "references": {
+    "SYN-A1": {
+      "taxon": "SyntheticVirus-A",
+      "length": 220
+    },
+    "SYN-B1": {
+      "taxon": "SyntheticVirus-B",
+      "length": 220
+    },
+    "SYN-C1": {
+      "taxon": "SyntheticVirus-C",
+      "length": 220
+    },
+    "SYN-D1": {
+      "taxon": "SyntheticVirus-D",
+      "length": 220
+    }
+  }
+}

@@ -31,7 +31,7 @@ def render(report):
         f'<td><strong>{esc(w["sample_id"])}</strong><small>{esc(w["taxon"])} · {esc(w["reference_accession"])}</small></td>'
         f'<td>{esc(w["reads"])}</td><td>{esc(w["unique_regions"])}</td>'
         f'<td>{esc(round(w["breadth"]*100,2))} %</td>'
-        f'<td>{esc(w["identity_pct"])} %</td><td>{esc(w["host_similarity_pct"])} %</td>'
+        f'<td>{esc(w["identity_pct"])} %</td><td>{esc(str(w["host_similarity_pct"]) + " %" if w["host_similarity_pct"] is not None else "Non mesurée")}</td>'
         f'<td>{esc(", ".join(w["review_flags"]) or "Aucun indicateur complémentaire")}</td>'
         f'<td><span class="pill">{esc(w["state"])}</span></td></tr>'
         for w in report['worklist']
@@ -80,7 +80,7 @@ th {{color:#4e6776;background:#f1f6f7}} .pill {{display:inline-block;border-radi
 <details><summary>Paramètres de démonstration</summary><pre>{esc(json.dumps(report['demo_rules'], ensure_ascii=False, indent=2))}</pre></details></section>
 <section class="card"><h2>5. Traçabilité et limites</h2><p class="note">{esc(report['limitations'])}</p>
 <p>Références : <code>{esc(p['reference_snapshot'])}</code> · Logiciel : <code>{esc(p['software'])}</code></p>
-<details><summary>Empreintes SHA-256 des fichiers utilisés</summary><p>Hits : <code>{esc(p['hits_sha256'])}</code><br>Métadonnées : <code>{esc(p['metadata_sha256'])}</code><br>Règles : <code>{esc(p['config_sha256'])}</code></p></details></section>
+<details><summary>Empreintes SHA-256 des fichiers utilisés</summary><p>Hits : <code>{esc(p['hits_sha256'])}</code><br>Métadonnées : <code>{esc(p['metadata_sha256'])}</code><br>Règles : <code>{esc(p['config_sha256'])}</code><br>Catalogue : <code>{esc(p['references_sha256'])}</code></p></details></section>
 <p class="footer">Prototype indépendant ; aucune donnée client, procédure propriétaire ou méthode iDTECT® utilisée.</p>
 </main></body></html>'''
 

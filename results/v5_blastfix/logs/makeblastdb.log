@@ -1,0 +1,12 @@
+
+
+Building a new DB, current time: 09/27/2026 21:33:50
+New DB name:   /home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db
+New DB title:  /home/mahdi/ngs-operations-review-v5/data/public_references/panel.fasta
+Sequence type: Nucleotide
+Deleted existing Nucleotide BLAST database named /home/mahdi/ngs-operations-review-v5/results/v5_blastfix/work/panel_db
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 3 sequences in 0.147601 seconds.
+
+

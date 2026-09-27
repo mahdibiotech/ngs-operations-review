@@ -37,6 +37,10 @@ Codes de sortie : `0` = rapport produit, témoins du scénario passés ; `2` = r
 Cadrer les formats et critères avec les équipes scientifique/qualité, jeux d'essais représentatifs, performances analytiques, versions de références, qualification informatique, revue et signatures, contrôles d'accès, sauvegarde, audit trail réglementaire, SOP approuvées et gestion des changements. Les empreintes SHA-256 du prototype ne constituent pas à elles seules une piste d'audit conforme.
 # Extension v3 : références et défis reproductibles
 
+## Extension FASTQ de démonstration
+
+`fastq_demo.py` confronte quatre FASTQ fictifs à un FASTA fictif par correspondance exacte, sans tolérance aux erreurs. Les lectures ambiguës ne sont pas attribuées. La table produite est traitée par la même fonction `screen.run` que le scénario de preuves résumées. Le mode FASTQ conserve les empreintes des entrées et marque la similarité avec l'hôte comme non mesurée. Tests : `test_fastq_demo_reads_to_candidate_report` et `test_fastq_demo_rejects_malformed_quality_and_unknown_fasta`. Cette étape ne remplace pas une analyse NGS ou une validation de méthode.
+
 | Exigence de démonstration | Preuve dans le dépôt | Limite |
 | --- | --- | --- |
 | Version de références cohérente avec le lot | `screen.py` contrôle `snapshot_id`, accession, taxon et longueur ; `test_reference_catalogue_rejects_mismatches_and_tracks_version` | Catalogue entièrement fictif, sans base de séquences. |

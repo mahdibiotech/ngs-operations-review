@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SYN-RUN-001 · NGS Lot Review</title>
+<style>
+:root {font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#173348;background:#f2f6f8}
+* {box-sizing:border-box} body {margin:0} main {max-width:1120px;margin:auto;padding:32px 20px 65px}
+small {display:block;color:#56707e} h1 {font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:8px 0} h2 {font-size:1.25rem;margin:0 0 15px}
+.eyebrow {text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;font-weight:700;color:#457384}
+.sub {color:#49677a} .hero {margin:24px 0;background:#123e53;color:white;padding:26px;border-radius:16px}
+.hero.block {background:#754325} .hero strong {font-size:1.5rem} .hero p {margin-bottom:0;color:#e4eef1}
+.card {background:white;border:1px solid #dce7ea;border-radius:15px;padding:23px;margin:17px 0;box-shadow:0 3px 12px #1733480a}
+.checks {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px} .check {padding:13px;border-radius:9px;display:flex;flex-direction:column;gap:5px}
+.good {background:#eaf8f1} .bad {background:#fff0e6} .check strong {font-size:.72rem;letter-spacing:.03em}
+.scroll {overflow-x:auto} table {border-collapse:collapse;width:100%;font-size:.91rem} th,td {text-align:left;border-bottom:1px solid #e4ecef;padding:11px;vertical-align:top;white-space:nowrap}
+th {color:#4e6776;background:#f1f6f7} .pill {display:inline-block;border-radius:20px;background:#fff0d9;color:#68410b;padding:3px 8px;font-weight:700;font-size:.76rem}
+.note {padding:14px 18px;border-left:4px solid #cc8840;background:#fff8e9} code {overflow-wrap:anywhere;font-size:.79rem} .footer {color:#526b79;font-size:.83rem}
+@media(max-width:720px) {.checks {grid-template-columns:1fr} main {padding:20px 12px} .card {padding:15px}}
+</style></head><body><main>
+<div class="eyebrow">Portefeuille technique · données entièrement synthétiques</div>
+<h1>NGS Lot Review</h1>
+<p class="sub">Lot SYN-RUN-001 · synthetic short-read example · generic adventitious-signal review, not an iDTECT assay</p>
+<section class="hero "><strong>Témoins acceptés : revue humaine possible</strong>
+<p>Statut : REVIEW_READY · 2 candidat(s) de revue. Aucun résultat ne vaut identification confirmée.</p></section>
+<section class="card"><h2>1. Portes de contrôle</h2><div class="checks"><div class="check good"><span>Témoin positif attendu</span><strong>CONFORME AU SCÉNARIO</strong></div><div class="check good"><span>Témoin négatif</span><strong>CONFORME AU SCÉNARIO</strong></div><div class="check good"><span>Profondeur des échantillons</span><strong>CONFORME AU SCÉNARIO</strong></div></div></section>
+<section class="card"><h2>2. Échantillons du lot</h2><div class="scroll"><table><thead><tr><th>ID</th><th>Rôle</th><th>Reads totaux</th><th>Cible attendue</th></tr></thead><tbody><tr><td>TEST001</td><td>test</td><td>4</td><td>—</td></tr><tr><td>TEST002</td><td>test</td><td>3</td><td>—</td></tr><tr><td>NEG001</td><td>negative</td><td>1</td><td>—</td></tr><tr><td>POS001</td><td>positive</td><td>4</td><td>SyntheticVirus-A</td></tr></tbody></table></div></section>
+<section class="card"><h2>3. Liste de revue humaine</h2>
+<p class="sub">Ces signaux dépassent les seuils illustratifs. Les indicateurs supplémentaires demandent une expertise, sans éliminer automatiquement le signal.</p>
+<div class="scroll"><table><thead><tr><th>Échantillon et référence</th><th>Reads</th><th>Régions</th><th>Couverture</th><th>Identité</th><th>Similarité hôte</th><th>Indicateurs</th><th>État</th></tr></thead><tbody><tr><td><strong>TEST001</strong><small>SyntheticVirus-A · SYN-A1</small></td><td>4</td><td>4</td><td>54.55 %</td><td>100.0 %</td><td>Non mesurée</td><td>Aucun indicateur complémentaire</td><td><span class="pill">HUMAN_REVIEW</span></td></tr><tr><td><strong>TEST002</strong><small>SyntheticVirus-C · SYN-C1</small></td><td>3</td><td>3</td><td>40.91 %</td><td>100.0 %</td><td>Non mesurée</td><td>NEGATIVE_BACKGROUND</td><td><span class="pill">HUMAN_REVIEW</span></td></tr></tbody></table></div></section>
+<section class="card"><h2>4. Toutes les preuves fournies</h2><div class="scroll"><table><thead><tr><th>Échantillon</th><th>Rôle</th><th>Taxon et référence</th><th>Reads</th><th>Reads/million</th><th>Régions</th><th>Couverture</th><th>Identité</th><th>Seuil</th></tr></thead><tbody><tr><td>TEST001</td><td>test</td><td>SyntheticVirus-A<small>SYN-A1</small></td><td>4</td><td>1000000.0</td><td>4</td><td>54.55 %</td><td>100.0 %</td><td>OUI</td></tr><tr><td>TEST002</td><td>test</td><td>SyntheticVirus-C<small>SYN-C1</small></td><td>3</td><td>1000000.0</td><td>3</td><td>40.91 %</td><td>100.0 %</td><td>OUI</td></tr><tr><td>NEG001</td><td>negative</td><td>SyntheticVirus-A<small>SYN-A1</small></td><td>0</td><td>0.0</td><td>0</td><td>0.0 %</td><td>0.0 %</td><td>NON</td></tr><tr><td>NEG001</td><td>negative</td><td>SyntheticVirus-B<small>SYN-B1</small></td><td>0</td><td>0.0</td><td>0</td><td>0.0 %</td><td>0.0 %</td><td>NON</td></tr><tr><td>NEG001</td><td>negative</td><td>SyntheticVirus-C<small>SYN-C1</small></td><td>1</td><td>1000000.0</td><td>1</td><td>13.64 %</td><td>100.0 %</td><td>NON</td></tr><tr><td>NEG001</td><td>negative</td><td>SyntheticVirus-D<small>SYN-D1</small></td><td>0</td><td>0.0</td><td>0</td><td>0.0 %</td><td>0.0 %</td><td>NON</td></tr><tr><td>POS001</td><td>positive</td><td>SyntheticVirus-A<small>SYN-A1</small></td><td>4</td><td>1000000.0</td><td>4</td><td>54.55 %</td><td>100.0 %</td><td>OUI</td></tr><tr><td>POS001</td><td>positive</td><td>SyntheticVirus-B<small>SYN-B1</small></td><td>0</td><td>0.0</td><td>0</td><td>0.0 %</td><td>0.0 %</td><td>NON</td></tr><tr><td>POS001</td><td>positive</td><td>SyntheticVirus-C<small>SYN-C1</small></td><td>0</td><td>0.0</td><td>0</td><td>0.0 %</td><td>0.0 %</td><td>NON</td></tr><tr><td>POS001</td><td>positive</td><td>SyntheticVirus-D<small>SYN-D1</small></td><td>0</td><td>0.0</td><td>0</td><td>0.0 %</td><td>0.0 %</td><td>NON</td></tr></tbody></table></div>
+<details><summary>Paramètres de démonstration</summary><pre>{
+  &quot;min_reads&quot;: 3,
+  &quot;min_breadth&quot;: 0.05,
+  &quot;min_identity_pct&quot;: 90.0,
+  &quot;min_total_reads&quot;: 1,
+  &quot;min_unique_regions&quot;: 2,
+  &quot;host_similarity_review_pct&quot;: 95.0
+}</pre></details></section>
+<section class="card"><h2>5. Traçabilité et limites</h2><p class="note">Synthetic training data and illustrative thresholds. Flags are triage prompts, not evidence of contamination, validated assay results, lot release or GMP compliance.</p>
+<p>Références : <code>synthetic-refset-2026-09</code> · Logiciel : <code>3.0.0-demo</code></p>
+<details><summary>Empreintes SHA-256 des fichiers utilisés</summary><p>Hits : <code>d873daf4dd947cbde2a7890b0e10e0f8387dcea5e2fb669cb72ed4d9147cfdd1</code><br>Métadonnées : <code>657b5b5cc3b4af3f97bc192accce7a24669031ebde489c58331a8dc4bd60d17f</code><br>Règles : <code>fc1b6be0d74290d6e4d547b5341d7229358c3b9023401c536cfb51243e778d20</code><br>Catalogue : <code>37334b2da7bd1a2e6f2e70ee9b833e6783350fc26b863a2859e1e61fb0c5ee71</code></p></details></section>
+<p class="footer">Prototype indépendant ; aucune donnée client, procédure propriétaire ou méthode iDTECT® utilisée.</p>
+</main></body></html>
