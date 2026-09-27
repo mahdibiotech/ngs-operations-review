@@ -35,3 +35,12 @@ Codes de sortie : `0` = rapport produit, témoins du scénario passés ; `2` = r
 ## Étapes nécessaires pour un vrai environnement BPF
 
 Cadrer les formats et critères avec les équipes scientifique/qualité, jeux d'essais représentatifs, performances analytiques, versions de références, qualification informatique, revue et signatures, contrôles d'accès, sauvegarde, audit trail réglementaire, SOP approuvées et gestion des changements. Les empreintes SHA-256 du prototype ne constituent pas à elles seules une piste d'audit conforme.
+# Extension v3 : références et défis reproductibles
+
+| Exigence de démonstration | Preuve dans le dépôt | Limite |
+| --- | --- | --- |
+| Version de références cohérente avec le lot | `screen.py` contrôle `snapshot_id`, accession, taxon et longueur ; `test_reference_catalogue_rejects_mismatches_and_tracks_version` | Catalogue entièrement fictif, sans base de séquences. |
+| Détecter une modification des références | `provenance.references_sha256` dans `results/report.json` | L'empreinte ne garantit pas l'intégrité d'une chaîne BPF. |
+| Rejouer les comportements critiques | `python3 validate_demo.py` écrit `results/validation_report.json` ; `test_challenge_matrix_passes` | Huit cas synthétiques, pas une validation analytique. |
+
+Ces contrôles illustrent les besoins de traçabilité et de répétabilité évoqués par les descriptions publiques de PathoQuest, sans supposer que l'entreprise rencontre ces problèmes en interne.

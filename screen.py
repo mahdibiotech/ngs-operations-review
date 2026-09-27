@@ -8,7 +8,7 @@ import math
 import sys
 from pathlib import Path
 
-VERSION = '2.0.0-demo'
+VERSION = '3.0.0-demo'
 COLUMNS = ('sample_id', 'taxon', 'reference_accession', 'reads', 'unique_regions',
            'covered_bases', 'reference_bases', 'mean_identity', 'host_similarity_pct')
 ROLES = {'test', 'positive', 'negative'}
@@ -48,14 +48,25 @@ def decimal(value, label, minimum=0, maximum=100):
     return number
 
 
-def read_inputs(hits_path, metadata_path, config_path):
+def read_inputs(hits_path, metadata_path, config_path, references_path):
     metadata = json.loads(metadata_path.read_text(encoding='utf-8'))
     config = json.loads(config_path.read_text(encoding='utf-8'))
+    catalogue = json.loads(references_path.read_text(encoding='utf-8'))
     if not isinstance(metadata, dict) or not isinstance(config, dict):
         raise ValueError('metadata and config must be JSON objects')
     for key in ('run_id', 'platform', 'assay_context', 'reference_snapshot'):
         if not isinstance(metadata.get(key), str) or not metadata[key].strip():
             raise ValueError(f'metadata: nonempty {key} required')
+    if not isinstance(catalogue, dict) or catalogue.get('snapshot_id') != metadata['reference_snapshot']:
+        raise ValueError('references: snapshot_id must match metadata.reference_snapshot')
+    references = catalogue.get('references')
+    if not isinstance(references, dict) or not references:
+        raise ValueError('references: nonempty references object required')
+    for accession, reference in references.items():
+        if (not isinstance(accession, str) or not accession or not isinstance(reference, dict)
+                or not isinstance(reference.get('taxon'), str) or not reference['taxon'].strip()):
+            raise ValueError('references: invalid accession or taxon')
+        reference['length'] = integer(reference.get('length'), f'references.{accession}.length', 1)
     samples = metadata.get('samples')
     if not isinstance(samples, dict) or not samples:
         raise ValueError('metadata: nonempty samples object required')
@@ -99,6 +110,9 @@ def read_inputs(hits_path, metadata_path, config_path):
         for field in ('reads', 'unique_regions', 'covered_bases'):
             item[field] = integer(row[field], f'hits line {line}.{field}')
         item['reference_bases'] = integer(row['reference_bases'], f'hits line {line}.reference_bases', 1)
+        reference = references.get(item['reference_accession'])
+        if reference is None or reference['taxon'] != item['taxon'] or reference['length'] != item['reference_bases']:
+            raise ValueError(f'hits line {line}: unknown reference or taxon/length mismatch')
         for field in ('mean_identity', 'host_similarity_pct'):
             item[field] = decimal(row[field], f'hits line {line}.{field}')
         if (item['unique_regions'] > item['reads'] or item['reads'] > samples[sid]['total_reads']
@@ -111,8 +125,9 @@ def read_inputs(hits_path, metadata_path, config_path):
     return metadata, config, parsed
 
 
-def run(hits_path, metadata_path, config_path):
-    metadata, config, hits = read_inputs(hits_path, metadata_path, config_path)
+def run(hits_path, metadata_path, config_path, references_path=None):
+    references_path = references_path or Path(__file__).resolve().parent / 'config/synthetic_references.json'
+    metadata, config, hits = read_inputs(hits_path, metadata_path, config_path, references_path)
     samples = metadata['samples']
     for hit in hits:
         hit['gate_pass'] = (hit['reads'] >= config['min_reads']
@@ -148,12 +163,13 @@ def run(hits_path, metadata_path, config_path):
         hit['review_flags'] = flags
     worklist.sort(key=lambda h: (h['sample_id'], h['taxon'], h['reference_accession']))
     return {
-        'schema_version': '2.0', 'run_id': metadata['run_id'], 'status': status,
+        'schema_version': '3.0', 'run_id': metadata['run_id'], 'status': status,
         'assay_context': metadata['assay_context'], 'platform': metadata['platform'],
         'qc': qc, 'samples': samples, 'hits': hits, 'worklist': worklist,
         'demo_rules': config,
         'provenance': {'hits_sha256': digest(hits_path), 'metadata_sha256': digest(metadata_path),
-                       'config_sha256': digest(config_path), 'reference_snapshot': metadata['reference_snapshot'],
+                       'config_sha256': digest(config_path), 'references_sha256': digest(references_path),
+                       'reference_snapshot': metadata['reference_snapshot'],
                        'software': VERSION},
         'limitations': ('Synthetic training data and illustrative thresholds. Flags are triage prompts, '
                         'not evidence of contamination, validated assay results, lot release or GMP compliance.'),
@@ -165,12 +181,13 @@ def main():
     parser.add_argument('--hits', type=Path, default=Path('data/demo_run/hits.tsv'))
     parser.add_argument('--metadata', type=Path, default=Path('data/demo_run/metadata.json'))
     parser.add_argument('--config', type=Path, default=Path('config/demo_rules.json'))
+    parser.add_argument('--references', type=Path, default=Path('config/synthetic_references.json'))
     parser.add_argument('--output', type=Path, default=Path('results/report.json'))
     parser.add_argument('--html', type=Path, default=Path('results/report.html'))
     parser.add_argument('--worklist', type=Path, default=Path('results/worklist.tsv'))
     args = parser.parse_args()
     try:
-        report = run(args.hits, args.metadata, args.config)
+        report = run(args.hits, args.metadata, args.config, args.references)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         from render_html import render

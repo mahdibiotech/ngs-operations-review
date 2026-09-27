@@ -1,0 +1,66 @@
+{
+  "title": "Synthetic challenge replay (not assay validation)",
+  "software": "3.0.0-demo",
+  "all_passed": true,
+  "cases": [
+    {
+      "case": "nominal_ambiguous",
+      "passed": true,
+      "observed_status": "REVIEW_READY",
+      "worklist_count": 2,
+      "issues": []
+    },
+    {
+      "case": "negative_control_failure",
+      "passed": true,
+      "observed_status": "QC_BLOCKED",
+      "worklist_count": 2,
+      "issues": []
+    },
+    {
+      "case": "positive_control_failure",
+      "passed": true,
+      "observed_status": "QC_BLOCKED",
+      "worklist_count": 2,
+      "issues": []
+    },
+    {
+      "case": "insufficient_depth",
+      "passed": true,
+      "observed_status": "QC_BLOCKED",
+      "worklist_count": 2,
+      "issues": []
+    },
+    {
+      "case": "threshold_equal",
+      "passed": true,
+      "observed_status": "REVIEW_READY",
+      "worklist_count": 2,
+      "issues": []
+    },
+    {
+      "case": "threshold_below",
+      "passed": true,
+      "observed_status": "REVIEW_READY",
+      "worklist_count": 1,
+      "issues": []
+    },
+    {
+      "case": "unknown_reference_rejected",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "case": "deterministic_replay",
+      "passed": true,
+      "issues": []
+    }
+  ],
+  "input_sha256": {
+    "hits": "c721de0a279c51dffe639d45714f0b2cfd834d0843d12e3019aee3772e5aa308",
+    "metadata": "63335bd10231bf4639ad5585f4879e1203afcdba3c2109f3c260441d3003fe54",
+    "rules": "2d6b81aa555dd635868a67ce7a64854f2d669b873eb196e5929bffb64fe1989c",
+    "references": "52c679852fef9bd53b87769ce7dbaba720a7262c41dd38e01edb5e1bd5978e77"
+  },
+  "limitations": "Synthetic summarized evidence only; does not establish analytical performance, GMP compliance or lot release."
+}

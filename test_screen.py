@@ -9,6 +9,7 @@ ROOT = Path(__file__).parent
 HITS = ROOT / 'data/demo_run/hits.tsv'
 META = ROOT / 'data/demo_run/metadata.json'
 CONFIG = ROOT / 'config/demo_rules.json'
+REFERENCES = ROOT / 'config/synthetic_references.json'
 
 
 class LotReviewTests(unittest.TestCase):
@@ -65,6 +66,28 @@ class LotReviewTests(unittest.TestCase):
         html = render(report)
         self.assertIn('&lt;script&gt;', html)
         self.assertNotIn('<script>alert(1)</script>', html)
+
+    def test_reference_catalogue_rejects_mismatches_and_tracks_version(self):
+        baseline = run(HITS, META, CONFIG)
+        self.assertIn('references_sha256', baseline['provenance'])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'references.json'
+            original = REFERENCES.read_text(encoding='utf-8')
+            path.write_text(original.replace('"length": 10000', '"length": 9999', 1))
+            with self.assertRaisesRegex(ValueError, 'taxon/length mismatch'):
+                run(HITS, META, CONFIG, path)
+            path.write_text(original.replace('synthetic-refset-2026-09', 'other-snapshot'))
+            with self.assertRaisesRegex(ValueError, 'snapshot_id'):
+                run(HITS, META, CONFIG, path)
+            path.write_text(original.replace('"SYN-D1"', '"SYN-D2"'))
+            self.assertNotEqual(baseline['provenance']['references_sha256'],
+                                run(HITS, META, CONFIG, path)['provenance']['references_sha256'])
+
+    def test_challenge_matrix_passes(self):
+        from validate_demo import replay
+        result = replay()
+        self.assertTrue(result['all_passed'], result['cases'])
+        self.assertEqual(len(result['cases']), 8)
 
 
 if __name__ == '__main__':

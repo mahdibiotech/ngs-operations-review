@@ -12,6 +12,7 @@ PathoQuest décrit publiquement des essais de sécurité virale et des analyses 
 
 ```bash
 python3 screen.py
+python3 validate_demo.py
 python3 -m unittest discover -s . -v
 ```
 
@@ -20,6 +21,9 @@ La première commande écrit :
 - `results/report.json` : état du lot, résultats complets, motifs de revue et empreintes des entrées/règles ;
 - `results/report.html` : rapport autonome à ouvrir dans un navigateur ;
 - `results/worklist.tsv` : candidats à examiner par une personne.
+- `results/validation_report.json` (deuxième commande) : huit défis synthétiques, résultat observé et empreintes des entrées.
+
+Chaque correspondance est confrontée au catalogue versionné `config/synthetic_references.json` : accession, taxon et longueur doivent correspondre. Le nom de version doit correspondre à `metadata.reference_snapshot`. L'empreinte SHA-256 du catalogue figure dans le rapport : une modification des références est visible lors de la revue. `validate_demo.py` vérifie les témoins, le blocage, une référence inconnue, la répétabilité et le comportement exactement au seuil et juste en dessous. Une erreur donne un code retour non nul.
 
 Dans WSL : `explorer.exe results` puis ouvrir `report.html`.
 
@@ -38,3 +42,5 @@ Ces trois commandes retournent le code `2` avec `QC_BLOCKED` et une liste de tra
 ## Périmètre exact
 
 Le prototype lit des **preuves résumées** venant d'une étape amont fictive. Il n'analyse pas de FASTQ, ne réalise ni alignement, ni BLAST, ni assemblage, ni identification virale, ni estimation de sensibilité/spécificité. Les contrôles et seuils sont pédagogiques ; le HTML n'est pas un certificat d'analyse. Une transposition en contexte BPF exigerait une validation et une infrastructure qualité distinctes.
+
+Ce banc d'essais prouve seulement que **le code de démonstration** réagit comme prévu à ces huit jeux fictifs ; il ne constitue ni une validation de méthode ni une qualification d'environnement réglementé. Pour exécuter sur d'autres entrées résumées, utiliser `--hits`, `--metadata`, `--config`, `--references` avec `screen.py`.
