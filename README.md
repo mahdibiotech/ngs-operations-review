@@ -39,7 +39,7 @@ python3 screen.py --metadata data/scenarios/low_depth/metadata.json --output /tm
 
 Ces trois commandes retournent le code `2` avec `QC_BLOCKED` et une liste de travail en état `ON_HOLD_QC`. Ne pas enchaîner avec `&&` si vous souhaitez voir les trois cas. `docs/requirements.md` lie chaque exigence à un test.
 
-## Périmètre exact
+## Limites et pistes d'amelioration
 
 Le prototype lit des **preuves résumées** venant d'une étape amont fictive. Il n'analyse pas de FASTQ, ne réalise ni alignement, ni BLAST, ni assemblage, ni identification virale, ni estimation de sensibilité/spécificité. Les contrôles et seuils sont pédagogiques ; le HTML n'est pas un certificat d'analyse. Une transposition en contexte BPF exigerait une validation et une infrastructure qualité distinctes.
 
